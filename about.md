@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Any application that can be written in JavaScript will eventually be written in JavaScript.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
-
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[tedhxduan@gmail.com](mailto:tedhxduan@gmail.com)
