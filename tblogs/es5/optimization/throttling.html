@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>throttling</title>
+  <style>
+    body {
+      margin: 5px;
+      height: 100000px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  hello, throttling.
+  <script>
+    const base = new Date();
+
+    const throttling = function (fn, time, interval) {
+      let timeout, start = new Date();
+
+      return function () {
+        const self = this, args = arguments;
+
+        const now = new Date();
+
+        const tocb = function () {
+          start = now;
+          fn.apply(self, args);
+        }
+
+        if (now - start > interval) {
+          tocb();
+        }
+      }
+    }
+
+    const fn = function () {
+      console.log(new Date() - base);
+    };
+
+    window.addEventListener('scroll', throttling(fn, 200, 3000));
+  </script>
+</body>
+
+</html>

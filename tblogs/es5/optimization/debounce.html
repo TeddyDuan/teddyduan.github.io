@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>debounce</title>
+  <style>
+    body {
+      margin: 5px;
+      height: 100000px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  hello, debounce.
+  <script>
+    let count = 0;
+
+    const debounce = function (fn, time) {
+      let timeout;
+
+      return function () {
+        const self = this, args = arguments;
+
+        const tocb = function () {
+          timeout = null;
+          fn.apply(self, args);
+        }
+
+        clearTimeout(timeout);
+        timeout = setTimeout(tocb, time);
+      }
+    }
+
+    const fn = function () {
+      console.log(count++);
+    };
+
+    window.addEventListener('scroll', debounce(fn, 100));
+  </script>
+</body>
+
+</html>
